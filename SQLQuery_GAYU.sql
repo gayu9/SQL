@@ -80,7 +80,21 @@ select FIRST_NAME,LAST_NAME from GAYATHRI_EMPLOYEES as g
   --17)
   select avg(SALARY)as avg_salary from GAYATHRI_EMPLOYEES where YEAR_OF_JOINING < getdate()
   --18)
-
+  select month(YEAR_OF_JOINING) as month_of_joining from GAYATHRI_EMPLOYEES group by month(YEAR_OF_JOINING) having count(ID)>5
   --19)
-
+   select LAST_NAME from GAYATHRI_EMPLOYEES where YEAR_OF_JOINING between '01/01/2010' and '12/31/2022'
   --20)
+  select distinct year(YEAR_OF_JOINING) from GAYATHRI_EMPLOYEES  group by year(YEAR_OF_JOINING) having count(ID) >2
+  --21)
+  select ID  from GAYATHRI_EMPLOYEES where SALARY >(select avg(SALARY) from GAYATHRI_EMPLOYEES)
+  --22)
+  select datediff(day,YEAR_OF_JOINING,YEAR_OF_RELIEVING), FIRST_NAME from  GAYATHRI_EMPLOYEES 
+
+  --23)
+  select distinct year(YEAR_OF_JOINING) ,FIRST_NAME from GAYATHRI_EMPLOYEES  order by year(YEAR_OF_JOINING) 
+
+  --24)
+ select upper(FIRST_NAME)as first_name,lower(LAST_NAME)as last_name from GAYATHRI_EMPLOYEES
+ --25)
+
+  --26)
