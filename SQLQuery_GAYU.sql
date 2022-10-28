@@ -88,7 +88,7 @@ select FIRST_NAME,LAST_NAME from GAYATHRI_EMPLOYEES as g
   --20)
   select distinct year(YEAR_OF_JOINING) from GAYATHRI_EMPLOYEES  group by year(YEAR_OF_JOINING) having count(ID) >2
   --21)
-select ID  from GAYATHRI_EMPLOYEES where SALARY >(select avg(SALARY) from GAYATHRI_EMPLOYEES)
+select DEPARTMENT_ID,AVG(SALARY)  from GAYATHRI_EMPLOYEES as g group by g.DEPARTMENT_ID having AVG(SALARY)>10000
   --22)
   select datediff(day,YEAR_OF_JOINING,YEAR_OF_RELIEVING), FIRST_NAME from  GAYATHRI_EMPLOYEES 
 
@@ -137,26 +137,30 @@ in thi Depertment_id is  foreign keye of employee table.
  on d.DEPARTMENT_ID=g.DEPARTMENT_ID ;
 
 --32)
- create synonym gayu_sysn for  GAYATHRI_EMPLOYEES 
+ create synonym GAYATHRI_SYN for  GAYATHRI_EMPLOYEES 
 
- select * from gayu_sysn
+ select * from GAYATHRI_SYN
  
 --33)
-create procedure Gayu_Procedure 
+create procedure GAYATHRI_PROCEDURE 
 as
+begin
 select * from GAYATHRI_EMPLOYEES where YEAR_OF_JOINING between '1/1/2010' and '12/31/2022'
+end
 Go
 
-exec Gayu_Procedure
+exec GAYATHRI_PROCEDURE
 --34) 
-create procedure Gayuu_Insert
+create procedure GAYATHRI_INSERT
 as
+begin
 insert into  GAYATHRI_DEPARTMENTS (DEPARTMENT_ID ,MANAGER_ID ,DEPARTMENT_NAME )
 values
-(11,6,'ADMIN')
+(8,6,'ADMIN')
+end
 go
 
-exec Gayuu_Insert
+exec GAYATHRI_INSERT
 
 --35)
 select replace(convert(varchar,'2006-12-30',101),'-','') + replace(convert(varchar,' 00:38:54' ,108),':','');	
